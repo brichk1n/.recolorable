@@ -1,12 +1,12 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TopDownMovement : MonoBehaviour
+public class TopDownMovement : MonoBehaviour, IMovable
 {
     [SerializeField] private float moveSpeed = 5f; // Скорость движения
 
     private Rigidbody2D rb;
-    private Vector2 movementInput;
+    private Vector2 wasdInput;
 
     private void Awake()
     {
@@ -16,13 +16,13 @@ public class TopDownMovement : MonoBehaviour
     // Этот метод вызывается из InputHandler
     public void Move(Vector2 inputDirection)
     {
-        movementInput = inputDirection;
+        wasdInput = inputDirection;
     }
 
     private void FixedUpdate()
     {
         // Нормализуем, чтобы по диагонали скорость не увеличивалась
-        Vector2 move = movementInput;
+        Vector2 move = wasdInput;
         if (move.magnitude > 1f)
             move.Normalize();
 
