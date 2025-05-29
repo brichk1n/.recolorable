@@ -4,10 +4,12 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     private TopDownMovement movement;
+    private Attack attack;
 
     private void Awake()
     {
         movement = GetComponent<TopDownMovement>();
+        attack = GetComponent<Attack>();
     }
 
     private void Update()
@@ -17,5 +19,10 @@ public class InputHandler : MonoBehaviour
             Input.GetAxisRaw("Vertical")
         );
         movement.Move(input);
+
+        if (Input.GetMouseButtonDown(0)) // ЛКМ
+        {
+            attack.Use();
+        }
     }
 }

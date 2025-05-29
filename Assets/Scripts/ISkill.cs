@@ -1,9 +1,9 @@
 using UnityEngine;
 public interface ISkill
 {
-    void Use(GameObject user);
+    void Use();
 
-    bool IsReady();
+    // bool IsReady();
 
-    float Cooldown { get; }
+    // float Cooldown { get; }
 }
